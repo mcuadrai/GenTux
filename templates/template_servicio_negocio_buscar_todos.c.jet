@@ -1,0 +1,68 @@
+<%@ jet package="com.gentux.negocio.template" imports="com.gentux.negocio.dto.* com.gentux.datos.util.* "  class="ClaseGenerarServicioBuscarTodosTuxedoTemplate" %>
+<% Service service = (Service) argument; %>
+/*
+  @author Mario de la Cuadra
+  @app Realizado por generador de código 
+   <%= service.getDescription()%>
+*/
+void <%= service.getName()%>(TPSVCINFO *rqst)
+{
+   FBFR32 *fml;
+   int transaccionGlobal;
+   long sts;
+      <%=GeneradorUtil.getNombreTipoEstructura(service.getLogicEntity().toUpperCase())%> *<%= service.getLogicEntity()%>;
+   char mensaje[1024+1];
+   int i=0;
+   Q_HANDLE *lista;
+
+   /******   Buffer de entrada   ******/
+   fml = (FBFR32 *)rqst->data;
+   
+   /******   Cuerpo del servicio   ******/
+   transaccionGlobal = tpgetlev();
+   TRX_BEGIN(transaccionGlobal);
+   if ((lista = (Q_HANDLE *)QNew()) == NULL)    
+   {
+      Fadd32(fml, HRM_MENSAJE_SERVICIO, "No es posible realizar la accion solicitada", 0);
+      TRX_ABORT(transaccionGlobal);
+      tpreturn(TPFAIL, ErrorServicio(sts, rqst->name), (char *)fml, 0L, 0L);
+   }
+   sts = <%= GeneradorUtil.getPrefijoServicioDatos()%>(lista, mensaje);
+   if (sts != SQL_SUCCESS)
+   {
+      if (sts == SQL_NOT_FOUND)
+      {
+         Fadd32(fml, HRM_MENSAJE_SERVICIO, "No hay datos de <%= service.getLogicEntity() %>", 0);
+      }
+      else
+      {
+         Fadd32(fml, HRM_MENSAJE_SERVICIO, mensaje, 0);
+       }
+       QDelete(lista);
+       TRX_ABORT(transaccionGlobal);
+       tpreturn(TPFAIL, ErrorServicio(sts, rqst->name),(char *)fml, 0L, 0L);
+   }
+   tpfree((char *)fml);
+   //                                cantidad de short y long   doubles,  char , caracteres/2
+   // TODO modificar valores de NewFml32
+   fml = NewFml32((long)lista->count, (short) 9, (short)0, (short) 1, (long)1024);
+   if (fml == NULL)
+   {
+      fml = NewFml32((long)1,(short)0, (short)0, (short)1, (long)512);
+      Fadd32(fml, HRM_MENSAJE_SERVICIO, "No es posible realizar la accion solicitada.", 0);
+      QDelete(lista);
+      TRX_ABORT(transaccionGlobal);
+      tpreturn(TPFAIL, ErrorServicio(sts, rqst->name), (char *)fml, 0L, 0L);
+   }
+
+   for (i=0; i<lista->count; i++)
+   {
+      <%= service.getLogicEntity() %> = (  <%=GeneradorUtil.getNombreTipoEstructura(service.getLogicEntity().toUpperCase())%> *)QGetItem(lista,i);
+      copiar<%=GeneradorUtil.convertirConPrimeraLetraMayuscula(service.getLogicEntity()) %>HaciaFML(<%= service.getLogicEntity() %>, fml);
+
+   }
+   QDelete(lista);
+   TRX_COMMIT(transaccionGlobal);
+   tpreturn(TPSUCCESS, SRV_SUCCESS, (char *)fml, 0L, 0L);
+    
+}

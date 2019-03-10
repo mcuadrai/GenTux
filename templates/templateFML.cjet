@@ -1,0 +1,4 @@
+<%@ jet package="com.gentux.datos.template" imports="com.gentux.datos.dto.* com.gentux.datos.util.*"  class="ClaseFMLTemplate" %>
+<% Table table = (Table) argument; %> 
+<%= GeneradorUtil.drawFMLs(table.getColumnas())%>
+

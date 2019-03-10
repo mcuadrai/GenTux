@@ -1,0 +1,21 @@
+<%@ jet package="com.gentux.datos.template" imports="com.gentux.datos.dto.* com.gentux.datos.util.* java.util.*"  class="ClaseFunTemplate" %>
+<% Table table = (Table) argument; %>
+void copiarFMLHacia<%=table.getNameWithFirstLetterUpperCase()%>(FBFR32 *fml, <%=GeneradorUtil.getNombreTipoEstructura(table.getName())%> *<%=table.getName()%>)
+{
+  <%
+	  for (Iterator<Column> _iterator = table.getColumnas().iterator(); _iterator.hasNext();) {
+			Column column = (Column) _iterator.next();
+  %>
+       Fget32(fml, <%=GeneradorUtil.getFMLField(column.getColumn_name()) %>, 0, <%= GeneradorUtil.writeCast(column.getData_type())%><%=table.getName()%>-><%= GeneradorUtil.convertFieldToVariable(column.getColumn_name()) %>, 0);
+   <% } %>
+}
+
+void copiar<%=table.getNameWithFirstLetterUpperCase()%>HaciaFML( <%=GeneradorUtil.getNombreTipoEstructura(table.getName())%> *<%=table.getName()%>, FBFR32 *fml)
+{
+  <%  
+	  for (Iterator<Column> _iterator = table.getColumnas().iterator(); _iterator.hasNext();) {
+			Column column = (Column) _iterator.next();
+  %>
+		Fadd32(fml, <%=GeneradorUtil.getFMLField(column.getColumn_name()) %>  ,  <%= GeneradorUtil.writeCast(column.getData_type())%><%=table.getName()%>-><%= GeneradorUtil.convertFieldToVariable(column.getColumn_name()) %>, 0);
+  <% } %>			
+}

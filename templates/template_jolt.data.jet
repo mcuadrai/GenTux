@@ -1,0 +1,18 @@
+<%@ jet package="com.gentux.negocio.template" imports="com.gentux.negocio.dto.* com.gentux.datos.util.* java.util.*"  class="ClaseDefinicionServiciosJoltTemplate" %>
+<% Service service = (Service) argument; %>
+service=<%= service.getName()%>
+export=true
+inbuf=FML32
+outbuf=FML32
+  <%
+	  for (Iterator<Parameter> _iterator = service.getParameters().iterator(); _iterator.hasNext();) {
+			Parameter parameter = (Parameter) _iterator.next();
+  %>
+param=<%=parameter.getName()%>
+type=<%=parameter.getType()%>
+access=<%=parameter.getAccess()%>
+ <%}%>
+param=HRM_MENSAJE_SERVICIO
+type=string
+access=out
+

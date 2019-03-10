@@ -1,0 +1,42 @@
+Crear Solicitud de Cliente	; tipo =tabla ; acceso=out; nombre=
+Grabar solicitud de cliente	; tipo =tabla ; acceso=out; nombre=
+Evaluar solicitud de cliente	; tipo =tabla ; acceso=out; nombre=
+Buscar Solicitud por Rut o Número de Serie	; tipo =tabla ; acceso=out; nombre=
+Buscar Solicitudes por Tipo de Admisión o Estado de Solicitud	; tipo =tabla ; acceso=out; nombre=
+
+Buscar Datos Comerciales (información empresa, dirección, visita) ; tipo =tabla ; acceso=out; nombre=SOL_DIRECCION,SOL_VISITAEJECUTIVO
+Grabar información comercial	; tipo =tabla ; acceso=out; nombre=SOL_CLIENTEJURIDICO
+Grabar Dirección Comercial y Empresa y  Visita	; tipo =tabla ; acceso=out; nombre=SOL_DIRECCION,SOL_VISITAEJECUTIVO
+Buscar información de Cliente Jurídico desde DICOM	; tipo =tabla ; acceso=out; nombre=SOL_CLIENTEJURIDICO
+Buscar Resumen de Balance	; tipo =tabla ; acceso=out; nombre=SOL_BALANCE, SOL_ESTADISTICA_BALANCE
+Grabar Balance			; tipo =tabla ; acceso=in;  nombre=SOL_BALANCE, SOL_ESTADISTICA_BALANCE
+Buscar Informe de Compra y Venta; tipo =tabla ; acceso=out; nombre=SOL_IVACOMPRAYVENTA, SOL_ESTADISTICA_COMPRAYVENTA
+Crear IVA Compra y Venta	; tipo =tabla ; acceso=in; nombre=SOL_IVACOMPRAYVENTA
+Buscar IVA Compra y Venta	; tipo =tabla ; acceso=out; nombre=SOL_IVACOMPRAYVENTA
+Modificar IVA Compra y Venta	; tipo =tabla ; acceso=in; nombre=SOL_IVACOMPRAYVENTA
+Eliminar IVA Compra y Venta	; tipo =tabla ; acceso=in; nombre=CODIGO
+Grabar Compra y Venta		; tipo =tabla ; acceso=in; nombre=SOL_IVACOMPRAYVENTA, SOL_ESTADISTICA_COMPRAYVENTA
+Grabar solicitudes anuladas	; tipo =tabla ; acceso=in; nombre=SOL_SOLICITUD
+Grabar datos de Sociedad	; tipo =tabla ; acceso=in; nombre=SOL_SOCIEDADLEGAL
+Buscar Informe de Sociedad (Representantes Legales, Apoderados, Constituyentes)	; tipo =tabla ; acceso=out; nombre=SOL_PERSONASOCIEDAD
+Crear Representante Legal	; tipo =tabla ; acceso=in; nombre=SOL_PERSONASOCIEDAD
+Buscar Representante Legal	; tipo =tabla ; acceso=out; nombre=SOL_PERSONASOCIEDAD
+Modificar Representante Legal	; tipo =tabla ; acceso=in; nombre=SOL_PERSONASOCIEDAD
+Eliminar  Representante Legal	; tipo =tabla ; acceso=in; nombre=CODIGO
+Crear Apoderado	; tipo =tabla ; acceso=in; nombre=SOL_PERSONASOCIEDAD
+Buscar Apoderado	; tipo =tabla ; acceso=out; nombre=SOL_PERSONASOCIEDAD
+Modificar Apoderado	; tipo =tabla ; acceso=in; nombre=SOL_PERSONASOCIEDAD
+Eliminar Apoderado	; tipo =tabla ; acceso=in; nombre=CODIGO
+Crear Constituyente	; tipo =tabla ; acceso=in; nombre=SOL_PERSONASOCIEDAD
+Buscar Constituyente	; tipo =tabla ; acceso=out; nombre=SOL_PERSONASOCIEDAD
+Modificar Constituyente	; tipo =tabla ; acceso=in; nombre=SOL_PERSONASOCIEDAD
+Eliminar Constituyente	; tipo =tabla ; acceso=in; nombre=CODIGO
+Buscar Informe de Resumen de Facultades Administrativas	; tipo =tabla ; acceso=out; nombre=SOL_FACULTAD_PERSONASOCIEDAD; //???
+Buscar Cuenta de Capitalización	; tipo =tabla ; acceso=out; nombre=SOL_CUENTACAPITAL
+Grabar Cuenta de Capitalización	; tipo =tabla ; acceso=in; nombre=SOL_CUENTACAPITAL
+Buscar Cuenta de Ahorro	; tipo =tabla ; acceso=out; nombre=SOL_CUENTAAHORRO
+Grabar Cuenta de Ahorro	; tipo =tabla ; acceso=in; nombre=SOL_CUENTAAHORRO
+Buscar Checklist Admisión Persona Jurídica	; tipo =tabla ; acceso=out; nombre=SOL_ITEM_CHECKLISTADMISION
+Grabar Checklist Admisión Persona Jurídica	; tipo =tabla ; acceso=in ; nombre=SOL_ITEM_CHECKLISTADMISION
+Aprobar Solicitud	; tipo =tabla ; acceso=in; nombre=SOL_SOLICITUD
+Rechazar Solicitud	; tipo =tabla ; acceso=in; nombre=SOL_SOLICITUD

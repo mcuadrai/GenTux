@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<serviciosJolt>
+  <servicio>
+    <nombre>CjaInsTerATM</nombre>
+    <tipo>m</tipo>
+    <descripcion>Insertar Terminal ATM</descripcion>
+    <entidadLogica>terminalAtm</entidadLogica>
+    <parametros> 
+	  <parametro>
+			 <nombre>4CODIGO</nombre>
+			 <tipo>short</tipo>
+	         <acceso>in</acceso>
+	  </parametro> 
+	  <parametro>
+			 <nombre>4DESCRIPCION</nombre>
+			 <tipo>string</tipo>
+	         <acceso>in</acceso>
+	  </parametro> </parametros>
+  </servicio>
+  <servicio>
+    <nombre>CjaModTerATM</nombre>
+    <tipo>m</tipo>
+    <descripcion>Modificar Terminal ATM</descripcion>
+    <entidadLogica>terminalAtm</entidadLogica>
+    <parametros> 
+	  <parametro>
+			 <nombre>4CODIGO</nombre>
+			 <tipo>short</tipo>
+	         <acceso>in</acceso>
+	  </parametro> 
+	  <parametro>
+			 <nombre>4DESCRIPCION</nombre>
+			 <tipo>string</tipo>
+	         <acceso>in</acceso>
+	  </parametro> </parametros>
+  </servicio>
+  <servicio>
+    <nombre>CjaEliTerATM</nombre>
+    <tipo>m</tipo>
+    <descripcion>Eliminar Terminal ATM</descripcion>
+    <entidadLogica>terminalAtm</entidadLogica>
+    <parametros> 
+	  <parametro>
+			 <nombre>4CODIGO</nombre>
+			 <tipo>short</tipo>
+	         <acceso>in</acceso>
+	  </parametro> 
+	  <parametro>
+			 <nombre>4DESCRIPCION</nombre>
+			 <tipo>string</tipo>
+	         <acceso>in</acceso>
+	  </parametro> </parametros>
+  </servicio>
+  <servicio>
+    <nombre>CjaBusTerATM</nombre>
+    <tipo>b</tipo>
+    <descripcion>Buscar Terminal ATM</descripcion>
+    <entidadLogica>terminalAtm</entidadLogica>
+    <parametros> 
+	  <parametro>
+			 <nombre>4CODIGO</nombre>
+			 <tipo>short</tipo>
+	         <acceso>out</acceso>
+	  </parametro> 
+	  <parametro>
+			 <nombre>4DESCRIPCION</nombre>
+			 <tipo>string</tipo>
+	         <acceso>out</acceso>
+	  </parametro> </parametros>
+  </servicio>
+  <servicio>
+    <nombre>CjaBusTodTerATM</nombre>
+    <tipo>bt</tipo>
+    <descripcion>Buscar Todos Terminales ATM</descripcion>
+    <entidadLogica>terminalAtm</entidadLogica>
+    <parametros> 
+	  <parametro>
+			 <nombre>4CODIGO</nombre>
+			 <tipo>short</tipo>
+	         <acceso>out</acceso>
+	  </parametro> 
+	  <parametro>
+			 <nombre>4DESCRIPCION</nombre>
+			 <tipo>string</tipo>
+	         <acceso>out</acceso>
+	  </parametro> </parametros>
+  </servicio>
+  
+</serviciosJolt>

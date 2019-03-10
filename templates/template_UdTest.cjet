@@ -1,0 +1,8 @@
+<%@ jet package="com.gentux.datos.template" imports="com.gentux.negocio.dto.*  java.util.*"  class="ClaseUdTestTemplate" %>
+<% Service service = (Service) argument; %>SRVCNM	<%= service.getName()%>
+<%	  for (Iterator<Parameter> _iterator = service.getParameters().iterator(); _iterator.hasNext();) {
+			Parameter parameter = (Parameter) _iterator.next();
+  %>
+<%=parameter.getName()%>	1
+<%}%>
+

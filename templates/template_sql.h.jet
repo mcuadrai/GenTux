@@ -1,0 +1,7 @@
+<%@ jet package="com.gentux.datos.template" imports="com.gentux.datos.dto.* com.gentux.datos.util.* "  class="ClaseEstandarSQLHTemplate" %>
+<% Table table = (Table) argument; %>
+long <%= GeneradorUtil.getPrefijoServicioDatos()%>Insertar<%=table.getNameWithFirstLetterUpperCase()%>(<%=GeneradorUtil.getNombreTipoEstructura(table.getName())%> <%=table.getName()%>, char *mensaje);
+long <%= GeneradorUtil.getPrefijoServicioDatos()%>Modificar<%=table.getNameWithFirstLetterUpperCase()%>(<%=GeneradorUtil.getNombreTipoEstructura(table.getName())%> <%=table.getName()%>, char *mensaje);
+long <%= GeneradorUtil.getPrefijoServicioDatos()%>Eliminar<%=table.getNameWithFirstLetterUpperCase()%>(<%=GeneradorUtil.getNombreTipoEstructura(table.getName())%> <%=table.getName()%>, char *mensaje);
+long <%= GeneradorUtil.getPrefijoServicioDatos()%>Buscar<%=table.getNameWithFirstLetterUpperCase()%>(<%=GeneradorUtil.drawDefinitionVariables(table.getColumnasDeClaveUnicaPrincipal()) %>, <%=GeneradorUtil.getNombreTipoEstructura(table.getName())%> *<%=table.getName()%>, char *mensaje);
+long <%= GeneradorUtil.getPrefijoServicioDatos()%>BuscarTodos<%=table.getNameWithFirstLetterUpperCase()%>(Q_HANDLE *lista, char *mensaje);

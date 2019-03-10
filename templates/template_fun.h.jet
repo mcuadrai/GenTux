@@ -1,0 +1,4 @@
+<%@ jet package="com.gentux.datos.template" imports="com.gentux.datos.dto.* com.gentux.datos.util.* "  class="ClaseFunHTemplate" %>
+<% Table table = (Table) argument; %>
+void copiarFMLHacia<%=table.getNameWithFirstLetterUpperCase()%>(FBFR32 *fml, <%= GeneradorUtil.getNombreTipoEstructura(table.getName()) %> *<%=table.getName()%>);
+void copiar<%=table.getNameWithFirstLetterUpperCase()%>HaciaFML(<%= GeneradorUtil.getNombreTipoEstructura(table.getName()) %> *<%=table.getName()%>, FBFR32 *fml);

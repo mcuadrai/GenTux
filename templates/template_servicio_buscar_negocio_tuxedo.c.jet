@@ -1,0 +1,39 @@
+<%@ jet package="com.gentux.negocio.template" imports="com.gentux.negocio.dto.* com.gentux.datos.util.* "  class="ClaseGenerarServicioBuscarTuxedoTemplate" %>
+<% Service service = (Service) argument; %>
+/*
+   @author Mario de la Cuadra Izquierdo
+   @app Realizado por generador de código 
+   <%= service.getDescription()%>
+*/
+void <%= service.getName()%>(TPSVCINFO *rqst)
+{
+   FBFR32 *fml;
+   int transaccionGlobal;
+   long sts;
+   char mensaje[1024+1];
+   <%=GeneradorUtil.getNombreTipoEstructura(service.getLogicEntity().toUpperCase())%> <%= service.getLogicEntity()%>;
+
+   /******   Buffer de entrada   ******/
+   fml = (FBFR32 *)rqst->data;
+   
+  copiarFMLHacia<%=GeneradorUtil.convertirConPrimeraLetraMayuscula(service.getLogicEntity()) %>(fml, &<%= service.getLogicEntity() %>);
+
+   /******   Cuerpo del servicio   ******/
+   transaccionGlobal = tpgetlev();
+   TRX_BEGIN(transaccionGlobal);
+
+   sts = <%= GeneradorUtil.getPrefijoServicioDatos()%><%= service.getName()%>(, &<%= service.getLogicEntity() %>, mensaje);
+   if (sts != SQL_SUCCESS && sts != SQL_NOT_FOUND)
+   {
+      Fadd32(fml, HRM_MENSAJE_SERVICIO, mensaje, 0);
+
+      TRX_ABORT(transaccionGlobal);
+      tpreturn(TPFAIL, ErrorServicio(sts, rqst->name), (char *)fml, 0L, 0L);
+   }
+  
+   copiar<%=GeneradorUtil.convertirConPrimeraLetraMayuscula(service.getLogicEntity()) %>HaciaFML(&<%= service.getLogicEntity() %>, fml);
+
+   TRX_COMMIT(transaccionGlobal);
+   tpreturn(TPSUCCESS, SRV_SUCCESS, (char *)fml, 0L, 0L);
+    
+}

@@ -1,0 +1,166 @@
+<%@ jet package="com.gentux.datos.template" imports="com.gentux.datos.dto.* com.gentux.datos.util.*"  class="ClaseBaseDatosTuxedoTemplate" %>
+
+<% Table table = (Table) argument; %>
+long <%= GeneradorUtil.getPrefijoServicioDatos()%>Insertar<%=table.getNameWithFirstLetterUpperCase()%>(<%= GeneradorUtil.getNombreTipoEstructura(table.getName())%> <%=table.getName()%>, char *mensaje)
+{
+   EXEC SQL BEGIN DECLARE SECTION;
+     <%= GeneradorUtil.getNombreTipoEstructura(table.getName())%> db<%=table.getNameWithFirstLetterUpperCase()%>;
+   EXEC SQL END DECLARE SECTION;
+
+   db<%=table.getNameWithFirstLetterUpperCase()%> = <%=table.getName()%>;
+
+   
+   EXEC SQL SELECT
+      SECUENCIA_<%=table.getTable_name()%>.NEXTVAL
+   INTO 
+      <%= GeneradorUtil.getDBVariables(table.getNameWithFirstLetterUpperCase(),".",table.getColumnasDeClaveUnicaPrincipal())%>
+   FROM DUAL;
+   
+   
+   if (sqlca.sqlcode != DBA_SUCCESS){
+      strcpy(mensaje, sqlca.sqlerrm.sqlerrmc); 
+      return (ErrorSql(sqlca));
+   }
+       
+   
+      EXEC SQL INSERT INTO <%=table.getTable_name()%> (
+<%= GeneradorUtil.getFields(table.getColumnas())%>
+   )
+   VALUES (
+  
+<%= GeneradorUtil.getDBVariables(table.getNameWithFirstLetterUpperCase(),".",table.getColumnas())%>
+       
+      );
+
+   if (sqlca.sqlcode != DBA_SUCCESS) {
+      strcpy(mensaje, sqlca.sqlerrm.sqlerrmc);
+      return ErrorSql(sqlca);
+   }
+   
+   return SQL_SUCCESS;
+}
+
+ 
+long <%= GeneradorUtil.getPrefijoServicioDatos()%>Modificar<%=table.getNameWithFirstLetterUpperCase()%>(<%= GeneradorUtil.getNombreTipoEstructura(table.getName())%> <%=table.getName()%>, char *mensaje)
+{
+  EXEC SQL BEGIN DECLARE SECTION;
+      <%= GeneradorUtil.getNombreTipoEstructura(table.getName())%> db<%=table.getNameWithFirstLetterUpperCase()%>;
+   EXEC SQL END DECLARE SECTION;
+
+   db<%=table.getNameWithFirstLetterUpperCase()%> = <%=table.getName()%>;
+ 
+ 
+   EXEC SQL UPDATE <%=table.getTable_name()%>  SET
+<%= GeneradorUtil.asignarVariablesHaciaColumnasEnSet(table.getNameWithFirstLetterUpperCase(), table.getColumnasNoPertenecenAClaveUnica() ) %>
+   WHERE
+<%= GeneradorUtil.asignarVariablesHaciaColumnasEnWhere(table.getNameWithFirstLetterUpperCase(), GeneradorUtil.ES_CON_REGISTRO, table.getColumnasDeClaveUnicaPrincipal() ) %>
+    ;
+ 
+   if (sqlca.sqlcode != DBA_SUCCESS) {
+      strcpy(mensaje, sqlca.sqlerrm.sqlerrmc);
+      return ErrorSql(sqlca);
+   }
+ 
+   return SQL_SUCCESS;
+}
+ 
+long <%= GeneradorUtil.getPrefijoServicioDatos()%>Eliminar<%=table.getNameWithFirstLetterUpperCase()%>(<%= GeneradorUtil.getNombreTipoEstructura(table.getName())%> <%=table.getName()%>, char *mensaje)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+      <%= GeneradorUtil.getNombreTipoEstructura(table.getName())%> db<%=table.getNameWithFirstLetterUpperCase()%>;
+   EXEC SQL END DECLARE SECTION;
+
+   db<%=table.getNameWithFirstLetterUpperCase()%> = <%=table.getName()%>;
+ 
+   EXEC SQL DELETE FROM <%=table.getTable_name()%>
+      WHERE 
+<%= GeneradorUtil.asignarVariablesHaciaColumnasEnWhere(table.getNameWithFirstLetterUpperCase(), GeneradorUtil.ES_CON_REGISTRO, table.getColumnasDeClaveUnicaPrincipal() ) %>
+      ;
+ 
+   if (sqlca.sqlcode != DBA_SUCCESS) {
+      strcpy(mensaje, sqlca.sqlerrm.sqlerrmc); 
+      return ErrorSql(sqlca);
+   }   
+   
+   return SQL_SUCCESS;
+
+} 
+
+long <%= GeneradorUtil.getPrefijoServicioDatos()%>Buscar<%=table.getNameWithFirstLetterUpperCase()%>(<%=GeneradorUtil.drawDefinitionVariables(table.getColumnasDeClaveUnicaPrincipal()) %>, <%= GeneradorUtil.getNombreTipoEstructura(table.getName())%> *<%=table.getName()%>, char *mensaje)
+{
+   EXEC SQL BEGIN DECLARE SECTION;
+      <%= GeneradorUtil.getNombreTipoEstructura(table.getName())%> *db<%=table.getNameWithFirstLetterUpperCase()%>;
+      long dbCodigo;
+   EXEC SQL END DECLARE SECTION;
+ 
+   db<%=table.getNameWithFirstLetterUpperCase()%> = <%=table.getName()%>;
+   dbCodigo = codigo;   
+ 
+   EXEC SQL SELECT
+<%= GeneradorUtil.getFields(table.getColumnas())%>
+   INTO
+<%= GeneradorUtil.getDBVariables(table.getNameWithFirstLetterUpperCase(),"->",table.getColumnas())%>
+   FROM  <%=table.getTable_name()%>
+   WHERE 
+   <%= GeneradorUtil.asignarVariablesHaciaColumnasEnWhere(table.getNameWithFirstLetterUpperCase(), !GeneradorUtil.ES_CON_REGISTRO , table.getColumnasDeClaveUnicaPrincipal() ) %>
+   ;   
+ 
+   if (sqlca.sqlcode != DBA_SUCCESS) {
+      strcpy(mensaje, sqlca.sqlerrm.sqlerrmc);
+      return ErrorSql(sqlca);
+   }
+   
+   return SQL_SUCCESS;
+
+}  
+
+  
+long <%= GeneradorUtil.getPrefijoServicioDatos()%>BuscarTodos<%=table.getNameWithFirstLetterUpperCase()%>(Q_HANDLE *lista, char *mensaje)
+{
+   long estadoFetch;
+   EXEC SQL BEGIN DECLARE SECTION;
+      <%= GeneradorUtil.getNombreTipoEstructura(table.getName())%> *db<%=table.getNameWithFirstLetterUpperCase()%>;
+   EXEC SQL END DECLARE SECTION;
+
+   lista->itemLen = sizeof(<%= GeneradorUtil.getNombreTipoEstructura(table.getName())%>);
+
+   EXEC SQL DECLARE Cursor<%=table.getNameWithFirstLetterUpperCase()%> CURSOR FOR
+   SELECT
+     <%= GeneradorUtil.getFields(table.getColumnas())%>
+   FROM  <%=table.getTable_name()%>  ;
+
+   EXEC SQL OPEN Cursor<%=table.getNameWithFirstLetterUpperCase()%>;
+   if (sqlca.sqlcode != DBA_SUCCESS) {
+     strcpy(mensaje, sqlca.sqlerrm.sqlerrmc);
+     return ErrorSql(sqlca);
+   }    
+
+   while (sqlca.sqlcode == DBA_SUCCESS)
+   {
+      if ((db<%=table.getNameWithFirstLetterUpperCase()%> = (<%= GeneradorUtil.getNombreTipoEstructura(table.getName())%> *)QMakeItem(lista)) == NULL)
+      {
+         EXEC SQL CLOSE Cursor<%=table.getNameWithFirstLetterUpperCase()%>;
+         return SQL_MEMORY;
+      }
+
+      EXEC SQL FETCH Cursor<%=table.getNameWithFirstLetterUpperCase()%> INTO
+        <%= GeneradorUtil.getDBVariables(table.getNameWithFirstLetterUpperCase(),"->",table.getColumnas())%>
+      ;
+      
+     if (sqlca.sqlcode != DBA_SUCCESS)
+      {
+         strcpy(mensaje, sqlca.sqlerrm.sqlerrmc);
+         QRemoveItem(lista, lista->count - 1);
+         if (sqlca.sqlcode != DBA_NOT_FOUND)
+            estadoFetch = ErrorSql(sqlca);
+         else if (lista->count)
+            estadoFetch = SQL_SUCCESS;
+         else
+            estadoFetch = SQL_NOT_FOUND;
+         EXEC SQL CLOSE Cursor<%=table.getNameWithFirstLetterUpperCase()%>;
+         return estadoFetch;
+      }
+   }
+   
+   return SQL_SUCCESS;
+}

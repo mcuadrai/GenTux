@@ -1,0 +1,13 @@
+<%@ jet package="com.gentux.datos.template" imports=""  class="ClaseImportarFunTemplate" %>
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <ctype.h>
+#include <atmi.h>           /* TUXEDO Header File API's */
+#include <userlog.h>        /* TUXEDO Header File */
+#include <fml32.h>          /* TUXEDO FML Support */
+#include <transferencia.h>
+#include <transferenciaFML.h>
+#include <olist.h>
+
+

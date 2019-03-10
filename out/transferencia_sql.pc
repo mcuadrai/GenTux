@@ -1,0 +1,177 @@
+
+long SqlCjaInsertarTerminalAtm(tCjaTERMINALATM terminalAtm, char *mensaje)
+{
+   EXEC SQL BEGIN DECLARE SECTION;
+     tCjaTERMINALATM dbTerminalAtm;
+   EXEC SQL END DECLARE SECTION;
+
+   dbTerminalAtm = terminalAtm;
+
+   
+   EXEC SQL SELECT
+      SECUENCIA_TERMINALATM.NEXTVAL
+   INTO 
+           :dbTerminalAtm.codigo
+
+   FROM DUAL;
+   
+   
+   if (sqlca.sqlcode != DBA_SUCCESS){
+      strcpy(mensaje, sqlca.sqlerrm.sqlerrmc); 
+      return (ErrorSql(sqlca));
+   }
+       
+   
+      EXEC SQL INSERT INTO TERMINALATM (
+     CODIGO,      DESCRIPCION
+   )
+   VALUES (
+  
+     :dbTerminalAtm.codigo, 
+     :dbTerminalAtm.descripcion
+
+       
+      );
+
+   if (sqlca.sqlcode != DBA_SUCCESS) {
+      strcpy(mensaje, sqlca.sqlerrm.sqlerrmc);
+      return ErrorSql(sqlca);
+   }
+   
+   return SQL_SUCCESS;
+}
+
+ 
+long SqlCjaModificarTerminalAtm(tCjaTERMINALATM terminalAtm, char *mensaje)
+{
+  EXEC SQL BEGIN DECLARE SECTION;
+      tCjaTERMINALATM dbTerminalAtm;
+   EXEC SQL END DECLARE SECTION;
+
+   dbTerminalAtm = terminalAtm;
+ 
+ 
+   EXEC SQL UPDATE TERMINALATM  SET
+     CODIGO = :dbTerminalAtm.codigo, 
+     DESCRIPCION = :dbTerminalAtm.descripcion
+
+   WHERE
+     CODIGO = :dbTerminalAtm.codigo
+
+    ;
+ 
+   if (sqlca.sqlcode != DBA_SUCCESS) {
+      strcpy(mensaje, sqlca.sqlerrm.sqlerrmc);
+      return ErrorSql(sqlca);
+   }
+ 
+   return SQL_SUCCESS;
+}
+ 
+long SqlCjaEliminarTerminalAtm(tCjaTERMINALATM terminalAtm, char *mensaje)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+      tCjaTERMINALATM dbTerminalAtm;
+   EXEC SQL END DECLARE SECTION;
+
+   dbTerminalAtm = terminalAtm;
+ 
+   EXEC SQL DELETE FROM TERMINALATM
+      WHERE 
+     CODIGO = :dbTerminalAtm.codigo
+
+      ;
+ 
+   if (sqlca.sqlcode != DBA_SUCCESS) {
+      strcpy(mensaje, sqlca.sqlerrm.sqlerrmc); 
+      return ErrorSql(sqlca);
+   }   
+   
+   return SQL_SUCCESS;
+
+} 
+
+long SqlCjaBuscarTerminalAtm( short codigo, tCjaTERMINALATM *terminalAtm, char *mensaje)
+{
+   EXEC SQL BEGIN DECLARE SECTION;
+      tCjaTERMINALATM *dbTerminalAtm;
+      long dbCodigo;
+   EXEC SQL END DECLARE SECTION;
+ 
+   dbTerminalAtm = terminalAtm;
+   dbCodigo = codigo;   
+ 
+   EXEC SQL SELECT
+     CODIGO,      DESCRIPCION
+   INTO
+     :dbTerminalAtm->codigo, 
+     :dbTerminalAtm->descripcion
+
+   FROM  TERMINALATM
+   WHERE 
+        CODIGO = :dbCodigo
+
+   ;   
+ 
+   if (sqlca.sqlcode != DBA_SUCCESS) {
+      strcpy(mensaje, sqlca.sqlerrm.sqlerrmc);
+      return ErrorSql(sqlca);
+   }
+   
+   return SQL_SUCCESS;
+
+}  
+
+  
+long SqlCjaBuscarTodosTerminalAtm(Q_HANDLE *lista, char *mensaje)
+{
+   long estadoFetch;
+   EXEC SQL BEGIN DECLARE SECTION;
+      tCjaTERMINALATM *dbTerminalAtm;
+   EXEC SQL END DECLARE SECTION;
+
+   lista->itemLen = sizeof(tCjaTERMINALATM);
+
+   EXEC SQL DECLARE CursorTerminalAtm CURSOR FOR
+   SELECT
+          CODIGO,      DESCRIPCION
+   FROM  TERMINALATM  ;
+
+   EXEC SQL OPEN CursorTerminalAtm;
+   if (sqlca.sqlcode != DBA_SUCCESS) {
+     strcpy(mensaje, sqlca.sqlerrm.sqlerrmc);
+     return ErrorSql(sqlca);
+   }    
+
+   while (sqlca.sqlcode == DBA_SUCCESS)
+   {
+      if ((dbTerminalAtm = (tCjaTERMINALATM *)QMakeItem(lista)) == NULL)
+      {
+         EXEC SQL CLOSE CursorTerminalAtm;
+         return SQL_MEMORY;
+      }
+
+      EXEC SQL FETCH CursorTerminalAtm INTO
+             :dbTerminalAtm->codigo, 
+     :dbTerminalAtm->descripcion
+
+      ;
+      
+     if (sqlca.sqlcode != DBA_SUCCESS)
+      {
+         strcpy(mensaje, sqlca.sqlerrm.sqlerrmc);
+         QRemoveItem(lista, lista->count - 1);
+         if (sqlca.sqlcode != DBA_NOT_FOUND)
+            estadoFetch = ErrorSql(sqlca);
+         else if (lista->count)
+            estadoFetch = SQL_SUCCESS;
+         else
+            estadoFetch = SQL_NOT_FOUND;
+         EXEC SQL CLOSE CursorTerminalAtm;
+         return estadoFetch;
+      }
+   }
+   
+   return SQL_SUCCESS;
+}
+

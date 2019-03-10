@@ -1,0 +1,6 @@
+Insertar Usuario Empresa; m; usuarioEmpresa; table ; in; USUARIOEMPRESA
+Modificar Usuario Empresa; m; usuarioEmpresa; table ; in; USUARIOEMPRESA
+Eliminar Usuario Empresa; m; usuarioEmpresa; table ; in; USUARIOEMPRESA
+Buscar Usuario Empresa; b; usuarioEmpresa; table ; out; USUARIOEMPRESA
+Buscar Todos Usuarios de Empresa; bt; usuarioEmpresa; table ; out; USUARIOEMPRESA
+Buscar Todos Estados Usuario Empresa; bt; estadoUsuarioDeEmpresa; table ; out; ESTADOUSUARIOEMPRESA

@@ -1,0 +1,68 @@
+<%@ jet package="com.gentux.negocio.template" imports="com.gentux.negocio.dto.* com.gentux.datos.util.* "  class="ClaseGenerarImportServicioNegocioTuxedoTemplate" %>
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <ctype.h>
+#include <malloc.h>
+
+#include <atmi.h>           /* TUXEDO Header File API's */
+#include <userlog.h>        /* TUXEDO Header File */
+#include <fml32.h>          /* TUXEDO FML Support */
+
+#include <olist.h>
+#include <transferencia.h>
+#include <transferencia_fun.h>
+#include <transferencia_sql.h>
+#include <transferenciaFML.h>
+#include <hermesFML.h>
+#include <servidor.h>
+#include <omegafml32.h>          
+#include <GestionDeErrores.h>
+
+#define TIME_OUT 20
+
+int tpsvrinit(int argc, char **argv)
+{
+   if (tpopen() == -1)
+   {
+      userlog("El Servidor de Admision: \"Admision\", fallo al conectarse con el Administrador de Base de Datos");
+      return(-1);
+   }
+
+      userlog("El Servidor de Admision: \"Admision\", ha iniciado su ejecucion satisfactoriamente...");
+   return(0);
+}
+
+
+void tpsvrdone()
+{
+   if (tpclose() == -1)
+   {
+      switch(tperrno)
+      {
+         case TPERMERR:
+            userlog("El Servidor de Admision: \"Admision\", fallo al desconectarse del Administrador de Base de Datos para mas informacion consultar al manejador especifico");
+            break;
+
+         case TPEPROTO:
+            userlog("El Servidor de Admision: \"Admision\", fallo al desconectarse del Administrador de Base de Datos debido a un problema de contexto del close()");
+            break;
+
+         case TPESYSTEM:
+            userlog("El Servidor de Admision: \"Admision\", fallo al desconectarse del Administrador de Base de Datos debido a un problema con Tuxedo-System/T");
+            break;
+
+         case TPEOS:
+            userlog("El Servidor de Admision: \"Admision\", fallo al desconectarse del Administrador de Base de Datos debido a un error del Sistema Operativo");
+            break;
+
+         default:
+            userlog("El Servidor de Admision: \"Admision\", fallo al desconectarse del Administrador de Base de Datos debido a un error de excepcion en el sistema");
+            break;
+      }
+	  return ;
+   }
+   userlog("El Servidor de Admision: \"Admision\", ha finalizado su ejecucion...");
+   return ;
+}
+

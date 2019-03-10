@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<serviciosJolt>
+  <servicio>
+    <nombre>BuscarDatosComerciales</nombre>
+    <tipo>b</tipo>
+    <descripcion>Buscar Datos Comerciales</descripcion>
+    <entidadLogica>datosComerciales</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_DIRECCION,SOL_VISITAEJECUTIVO</nombre>
+			 <tipo>table</tipo>
+	         <acceso>out</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>GrabarInformacionComercial</nombre>
+    <tipo>m</tipo>
+    <descripcion>Grabar Informacion Comercial</descripcion>
+    <entidadLogica>clienteJuridico</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_CLIENTEJURIDICO</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>GrabarDireccionComercialyEm</nombre>
+    <tipo>m</tipo>
+    <descripcion>Grabar Direccion Comercial y Empresa y  Visita</descripcion>
+    <entidadLogica>direccionVisitaEmpresa</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_DIRECCION,SOL_VISITAEJECUTIVO</nombre>
+			 <tipo>table</tipo>
+	         <acceso>out</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>BuscarInformacionClienteJur</nombre>
+    <tipo>b</tipo>
+    <descripcion>Buscar Informacion de Cliente Juridico desde DICOM</descripcion>
+    <entidadLogica>clienteJuridico</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_CLIENTEJURIDICO</nombre>
+			 <tipo>table</tipo>
+	         <acceso>out</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>BuscarResumenBalance</nombre>
+    <tipo>b</tipo>
+    <descripcion>Buscar Resumen de Balance</descripcion>
+    <entidadLogica>resumenBalance</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_BALANCE, SOL_ESTADISTICA_BALANCE</nombre>
+			 <tipo>table</tipo>
+	         <acceso>out</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>GrabarBalance</nombre>
+    <tipo>m</tipo>
+    <descripcion>Grabar Balance</descripcion>
+    <entidadLogica>balance</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_BALANCE, SOL_ESTADISTICA_BALANCE</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>BuscarInformeComprayVenta</nombre>
+    <tipo>b</tipo>
+    <descripcion>Buscar Informe de Compra y Venta</descripcion>
+    <entidadLogica>informeCompraVenta</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_IVACOMPRAYVENTA, SOL_ESTADISTICA_COMPRAYVENTA</nombre>
+			 <tipo>table</tipo>
+	         <acceso>out</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>CrearIVAComprayVenta</nombre>
+    <tipo>m</tipo>
+    <descripcion>Crear IVA Compra y Venta</descripcion>
+    <entidadLogica>ivaComprayVenta</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_IVACOMPRAYVENTA</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>BuscarIVAComprayVenta</nombre>
+    <tipo>b</tipo>
+    <descripcion>Buscar IVA Compra y Venta</descripcion>
+    <entidadLogica>ivaComprayVenta</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_IVACOMPRAYVENTA</nombre>
+			 <tipo>table</tipo>
+	         <acceso>out</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>ModificarIVAComprayVenta</nombre>
+    <tipo>m</tipo>
+    <descripcion>Modificar IVA Compra y Venta</descripcion>
+    <entidadLogica>ivaComprayVenta</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_IVACOMPRAYVENTA</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>EliminarIVAComprayVenta</nombre>
+    <tipo>m</tipo>
+    <descripcion>Eliminar IVA Compra y Venta</descripcion>
+    <entidadLogica>ivaComprayVenta</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>CODIGO</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>GrabarComprayVenta</nombre>
+    <tipo>m</tipo>
+    <descripcion>Grabar Compra y Venta</descripcion>
+    <entidadLogica>ivaComprayVenta</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_IVACOMPRAYVENTA, SOL_ESTADISTICA_COMPRAYVENTA</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>GrabarSolicitudesanuladas</nombre>
+    <tipo>m</tipo>
+    <descripcion>Grabar Solicitudes anuladas</descripcion>
+    <entidadLogica>solicitudes</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_SOLICITUD</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>GrabarSociedad</nombre>
+    <tipo>m</tipo>
+    <descripcion>Grabar Sociedad</descripcion>
+    <entidadLogica>sociedadLegal</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_SOCIEDADLEGAL</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>BuscarInformeSociedad</nombre>
+    <tipo>b</tipo>
+    <descripcion>Buscar Informe de Sociedad</descripcion>
+    <entidadLogica>informeSociedad</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_PERSONASOCIEDAD</nombre>
+			 <tipo>table</tipo>
+	         <acceso>out</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>CrearRepresentanteLegal</nombre>
+    <tipo>m</tipo>
+    <descripcion>Crear Representante Legal</descripcion>
+    <entidadLogica>personaSociedad</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_PERSONASOCIEDAD</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>BuscarRepresentanteLegal</nombre>
+    <tipo>m</tipo>
+    <descripcion>Buscar Representante Legal</descripcion>
+    <entidadLogica>personaSociedad</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_PERSONASOCIEDAD</nombre>
+			 <tipo>table</tipo>
+	         <acceso>out</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>ModificarRepresentanteLegal</nombre>
+    <tipo>m</tipo>
+    <descripcion>Modificar Representante Legal</descripcion>
+    <entidadLogica>personaSociedad</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_PERSONASOCIEDAD</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>EliminarRepresentanteLegal</nombre>
+    <tipo>m</tipo>
+    <descripcion>Eliminar  Representante Legal</descripcion>
+    <entidadLogica>personaSociedad</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>CODIGO</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>CrearApoderado</nombre>
+    <tipo>m</tipo>
+    <descripcion>Crear Apoderado</descripcion>
+    <entidadLogica>personaSociedad</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_PERSONASOCIEDAD</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>BuscarApoderado</nombre>
+    <tipo>b</tipo>
+    <descripcion>Buscar Apoderado</descripcion>
+    <entidadLogica>personaSociedad</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_PERSONASOCIEDAD</nombre>
+			 <tipo>table</tipo>
+	         <acceso>out</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>ModificarApoderado</nombre>
+    <tipo>m</tipo>
+    <descripcion>Modificar Apoderado</descripcion>
+    <entidadLogica>personaSociedad</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_PERSONASOCIEDAD</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>EliminarApoderado</nombre>
+    <tipo>m</tipo>
+    <descripcion>Eliminar Apoderado</descripcion>
+    <entidadLogica>personaSociedad</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>CODIGO</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>CrearConstituyente</nombre>
+    <tipo>m</tipo>
+    <descripcion>Crear Constituyente</descripcion>
+    <entidadLogica>personaSociedad</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_PERSONASOCIEDAD</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>BuscarConstituyente</nombre>
+    <tipo>b</tipo>
+    <descripcion>Buscar Constituyente</descripcion>
+    <entidadLogica>personaSociedad</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_PERSONASOCIEDAD</nombre>
+			 <tipo>table</tipo>
+	         <acceso>out</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>ModificarConstituyente</nombre>
+    <tipo>m</tipo>
+    <descripcion>Modificar Constituyente</descripcion>
+    <entidadLogica>personaSociedad</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_PERSONASOCIEDAD</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>EliminarConstituyente</nombre>
+    <tipo>m</tipo>
+    <descripcion>Eliminar Constituyente</descripcion>
+    <entidadLogica>personaSociedad</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>CODIGO</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>BuscarInformeResumenFaculta</nombre>
+    <tipo>b</tipo>
+    <descripcion>Buscar Informe de Resumen de Facultades Administrativas</descripcion>
+    <entidadLogica>informeResumenFacultades</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_FACULTAD_PERSONASOCIEDAD</nombre>
+			 <tipo>table</tipo>
+	         <acceso>out</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>BuscarCuentaCapitalizacion</nombre>
+    <tipo>b</tipo>
+    <descripcion>Buscar Cuenta de Capitalizacion</descripcion>
+    <entidadLogica>cuentaCapital</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_CUENTACAPITAL</nombre>
+			 <tipo>table</tipo>
+	         <acceso>out</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>GrabarCuentaCapitalizacion</nombre>
+    <tipo>m</tipo>
+    <descripcion>Grabar Cuenta de Capitalizacion</descripcion>
+    <entidadLogica>cuentaCapital</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_CUENTACAPITAL</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>BuscarCuentaAhorro</nombre>
+    <tipo>b</tipo>
+    <descripcion>Buscar Cuenta de Ahorro</descripcion>
+    <entidadLogica>cuentaAhorro</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_CUENTAAHORRO</nombre>
+			 <tipo>table</tipo>
+	         <acceso>out</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>GrabarCuentaAhorro</nombre>
+    <tipo>m</tipo>
+    <descripcion>Grabar Cuenta de Ahorro</descripcion>
+    <entidadLogica>cuentaAhorro</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_CUENTAAHORRO</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>BuscarChecklistAdmisionPers</nombre>
+    <tipo>b</tipo>
+    <descripcion>Buscar Checklist Admision Persona Juridica</descripcion>
+    <entidadLogica>checkListPersonaJuridica</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_ITEM_CHECKLISTADMISION</nombre>
+			 <tipo>table</tipo>
+	         <acceso>out</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>GrabarChecklistAdmisionPers</nombre>
+    <tipo>m</tipo>
+    <descripcion>Grabar Checklist Admision Persona Juridica</descripcion>
+    <entidadLogica>checkListPersonaJuridica</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_ITEM_CHECKLISTADMISION</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>AprobarSolicitud</nombre>
+    <tipo>m</tipo>
+    <descripcion>Aprobar Solicitud</descripcion>
+    <entidadLogica>solicitud</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_SOLICITUD</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+  <servicio>
+    <nombre>RechazarSolicitud</nombre>
+    <tipo>m</tipo>
+    <descripcion>Rechazar Solicitud</descripcion>
+    <entidadLogica>solicitud</entidadLogica>
+    <parametros>
+	   <parametro>
+			 <nombre>SOL_SOLICITUD</nombre>
+			 <tipo>table</tipo>
+	         <acceso>in</acceso>
+	   </parametro>
+	   
+    </parametros>
+  </servicio>
+</serviciosJolt>

@@ -1,0 +1,7 @@
+<%@ jet package="com.gentux.datos.template" imports="com.gentux.datos.dto.* com.gentux.datos.util.*"  class="ClaseRegistrosBDTemplate" %>
+
+<% Table table = (Table) argument; %> 
+
+typedef struct <%=table.getName()%> {
+<%= GeneradorUtil.getFieldsFromStruct(table.getColumnas())%>
+}    <%= GeneradorUtil.getNombreTipoEstructura(table.getName())%>;

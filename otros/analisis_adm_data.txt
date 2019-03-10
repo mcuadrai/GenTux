@@ -1,0 +1,37 @@
+---------ejemplo
+service=AdmRecTiposAdmi
+export=true
+inbuf=FML32
+outbuf=FML32
+
+param=ADM_CODIGO_TIPOADMISION
+type=short
+access=in
+
+param=ADM_DESCRIPCION_TIPOADMISION
+type=string
+access=out
+
+param=HRM_MENSAJE_SERVICIO
+type=string
+access=out
+
+
+----------------- pseudo-código
+nombreServicio, parametros_salida = {nombre_tabla, tipo= salida}
+nombreServicio, parametros_entrada = {nombre_tabla, tipo= entrada}
+nombreServicio, parametros_entrada_salida = {parametros_de_entrada }, {nombre_tabla, tipo= salida}
+................. xml
+<servicio>
+   <nombre>nombreServicio</nombre>
+   <parametros>
+         <parametro  acceso=in  type_simple=yes tipo=short >nombreCampoFML</parametro>
+         <parametro  acceso=out type_simpe=no   tipo=table >nombreTabla</parametro>
+   </parametros>
+</servicio>
+............... properties
+servicio_nombre = nombreServicio;
+servicio_parametro_nombre=nombreCampoFML/nombreTabla;
+servicio_parametro_acceso=in/out/inout
+servicio_parametro_tipo=short/string/integer/table
+

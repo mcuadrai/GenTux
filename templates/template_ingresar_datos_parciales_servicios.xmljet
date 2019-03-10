@@ -1,0 +1,25 @@
+<%@ jet package="com.gentux.negocio.template" imports="com.gentux.negocio.dto.* com.gentux.negocio.util.* java.util.*"  class="ClaseIngresarDatosParcialesServiciosTemplate" %>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<serviciosJolt>
+<%   ArrayList serviceList = (ArrayList) argument; 
+	  for (Iterator<Service> _iteratorSvc = serviceList.iterator(); _iteratorSvc.hasNext();) {
+			Service serviceXML = (Service) _iteratorSvc.next();
+  %>
+  <servicio>
+    <nombre><%= serviceXML.getName()%></nombre>
+    <tipo><%= serviceXML.getType()%></tipo>
+    <descripcion><%= serviceXML.getDescription()%></descripcion>
+    <entidadLogica><%= serviceXML.getLogicEntity() %></entidadLogica>
+    <parametros> 
+    <%	  for (Iterator<Parameter> _iterator = serviceXML.getParameters().iterator(); _iterator.hasNext();) {
+			Parameter parameterXML = (Parameter) _iterator.next();  %>
+	  <parametro>
+			 <nombre><%=parameterXML.getName()%></nombre>
+			 <tipo><%=parameterXML.getType()%></tipo>
+	         <acceso><%=parameterXML.getAccess()%></acceso>
+	  </parametro> 
+ <% } %></parametros>
+  </servicio>
+  <% }%>
+  
+</serviciosJolt>
