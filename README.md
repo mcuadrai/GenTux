@@ -22,7 +22,7 @@
 
 * Usa Eclipse
 * Escrito en Java
-* Plantilla de emisor de Java (JET).
+* Java Emitter Template (JET).
 Ver tutorial en :
 https://www.eclipse.org/articles/Article-JET/jet_tutorial1.html y https://www.eclipse.org/articles/Article-JET2/jet_tutorial2.html
 
