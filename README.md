@@ -1,5 +1,5 @@
-  # GenTux: ** Generador de código C para Tuxedo. **
-  Generador de servicios de negocio y de datos en lenguaje C.
+  # GenTux:     *Generador de código C para Tuxedo*
+     Generador de servicios de negocio y de datos en lenguaje C
   
   > Sea un 80% más productivo.
   > Desarrolle 80% más rápido.
@@ -11,7 +11,7 @@
 # Inspiración
   Desarrollar aplicaciones en lenguaje C más rápido en el middleware Tuxedo.
   
-# Caracteristicas
+# Características
 * Genera servicios de datos CRUD a partir de tablas de bases de datos    (programación orientada a los datos).
 * Genera servicios empresariales a partir de archivo xml.
 * Genera servicios de prueba de datos desde la tabla de base de datos.
@@ -34,17 +34,17 @@ https://www.eclipse.org/articles/Article-JET/jet_tutorial1.html y https://www.ec
 
 * Ejecutar los archivos como aplicación Java
  1. del paquete com.gentux.datos.generador:
- GeneradorDefinicionFirmaServicios.java
- GeneradorFMLs.java
- GeneradorFuncionesDatosEnC.java
- GeneradorFuncionesGenerales.java
- GeneradorStructs.java
+ * GeneradorDefinicionFirmaServicios.java
+ * GeneradorFMLs.java
+ * GeneradorFuncionesDatosEnC.java
+ * GeneradorFuncionesGenerales.java
+ * GeneradorStructs.java
 
  2. del paquete com.gentux.negocio.generador:
-GeneradorDefinicionServiciosJolt.java
-GeneradorImplementacionServiciosNegocioTuxedo.java
-GeneradorServiciosTuxedoXML.java
-GeneradorUdTestServiciosNegocio.java
+* GeneradorDefinicionServiciosJolt.java
+* GeneradorImplementacionServiciosNegocioTuxedo.java
+* GeneradorServiciosTuxedoXML.java
+* GeneradorUdTestServiciosNegocio.java
 
 
 # Licencia
