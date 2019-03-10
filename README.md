@@ -19,7 +19,8 @@ Generator business and data services in C language
 This application is build:
 * Written in Java language
 * Use Eclipse 
-* Java Emitter Template (JET). Ver tutorial en https://www.eclipse.org/articles/Article-JET2/jet_tutorial2.html
+* Java Emitter Template (JET). Ver tutorial en https://www.eclipse.org/articles/Article-JET/jet_tutorial1.html
+y https://www.eclipse.org/articles/Article-JET2/jet_tutorial2.html
 * Only works with Oracle database
 * It is very useful to build CRUD data services not to build business services with calls to other services
 
