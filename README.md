@@ -1,35 +1,53 @@
-# GenTux
-Generator business and data services in C language
-
-  > This code generator save time of development
-  > Can be 80% more productive
-  > Develop 80% more fast
-
-# Inspiration
-  Develop applications in C language more fast in Tuxedo middleware.
+  # GenTux: ** Generador de código C para Tuxedo. **
+  Generador de servicios de negocio y de datos en lenguaje C.
   
-# Features
-* Generate CRUD data services from database tables (data-driven programming)
-* Generate business services from xml file
-* Generate data test services from databse table
-* Define naming conventions from property files
-* Use templates to define services
+  > Sea un 80% más productivo.
+  > Desarrolle 80% más rápido.
 
-# Requirements and Limitations
-This application is build:
-* Written in Java language
-* Use Eclipse 
-* Java Emitter Template (JET). Ver tutorial en https://www.eclipse.org/articles/Article-JET/jet_tutorial1.html
-y https://www.eclipse.org/articles/Article-JET2/jet_tutorial2.html
-* Only works with Oracle database
-* It is very useful to build CRUD data services not to build business services with calls to other services
+# ¿Qué es GenTux?
+  Generador de servicios de negocio y de datos en lenguaje C.
+  Es muy útil crear servicios de datos CRUD y no para crear servicios de negocio con llamadas a muchos servicios.
+  
+# Inspiración
+  Desarrollar aplicaciones en lenguaje C más rápido en el middleware Tuxedo.
+  
+# Caracteristicas
+* Genera servicios de datos CRUD a partir de tablas de bases de datos    (programación orientada a los datos).
+* Genera servicios empresariales a partir de archivo xml.
+* Genera servicios de prueba de datos desde la tabla de base de datos.
+* Define convenciones de nomenclatura a partir de archivos de propiedades.
+* Usa plantillas para definir servicios.
 
-# Todos
-* Build bunch of test
-* Build business services from database table.
- 
-# License
+# Requisitos y limitaciones
+
+* Usa Eclipse
+* Escrito en Java
+* Plantilla de emisor de Java (JET).
+Ver tutorial en :
+https://www.eclipse.org/articles/Article-JET/jet_tutorial1.html y https://www.eclipse.org/articles/Article-JET2/jet_tutorial2.html
+
+
+# Cómo funciona
+
+* Ingresar a IDE Eclipse
+* Abrir el proyecto Gentux
+
+* Ejecutar los archivos como aplicación Java
+ 1. del paquete com.gentux.datos.generador:
+ GeneradorDefinicionFirmaServicios.java
+ GeneradorFMLs.java
+ GeneradorFuncionesDatosEnC.java
+ GeneradorFuncionesGenerales.java
+ GeneradorStructs.java
+
+ 2. del paquete com.gentux.negocio.generador:
+GeneradorDefinicionServiciosJolt.java
+GeneradorImplementacionServiciosNegocioTuxedo.java
+GeneradorServiciosTuxedoXML.java
+GeneradorUdTestServiciosNegocio.java
+
+
+# Licencia
 MIT
 
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
-
+[//]: # (Estos son enlaces de referencia que se usan en el cuerpo de esta nota y se eliminan cuando el procesador de rebajas hace su trabajo. No es necesario formatear bien porque no debería verse. Gracias SO - http: //stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
