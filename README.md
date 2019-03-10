@@ -15,6 +15,7 @@
 * Genera servicios de datos CRUD a partir de tablas de bases de datos    (programación orientada a los datos).
 * Genera servicios empresariales a partir de archivo xml.
 * Genera servicios de prueba de datos desde la tabla de base de datos.
+* Genera archivo data para conexión con JOLT.
 * Define convenciones de nomenclatura a partir de archivos de propiedades.
 * Usa plantillas para definir servicios.
 
