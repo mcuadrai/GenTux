@@ -10,7 +10,11 @@
   
 # Inspiración
   Desarrollar aplicaciones en lenguaje C más rápido en el middleware Tuxedo.
-  
+
+# Beneficios
+  Puede hacer servicios CRUD más su test unitario en 4 horas, y por lo general, esto puedo tomar 2 días para un programador novato.
+
+
 # Características
 * Genera servicios de datos CRUD a partir de tablas de bases de datos    (programación orientada a los datos).
 * Genera servicios empresariales a partir de archivo xml.
